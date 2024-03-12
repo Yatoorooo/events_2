@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #categories {
+            float: left;
+            width: 30%;
+        }
+
+        #products {
+            float: left;
+            width: 30%;
+        }
+
+        #details {
+            float: left;
+            width: 30%;
+        }
+
+        .product {
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        #buyButton {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="categories">
+        <ul>
+            <li onclick="showProducts('electronics')">Електроніка</li>
+            <li onclick="showProducts('clothing')">Одяг</li>
+            <li onclick="showProducts('books')">Книги</li>
+        </ul>
+    </div>
+
+    <div id="products"></div>
+
+    <div id="details">
+        <h2 id="productName"></h2>
+        <p id="productDescription"></p>
+        <button id="buyButton" onclick="buyProduct()">Купити</button>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
