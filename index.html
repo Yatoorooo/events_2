@@ -46,6 +46,40 @@
         <p id="productDescription"></p>
         <button id="buyButton" onclick="buyProduct()">Купити</button>
     </div>
+    <div id="orderForm" style="display:none;">
+        <h2>Форма оформлення замовлення</h2>
+        <form onsubmit="return submitOrder()">
+            <label for="fullName">ПІБ покупця:</label>
+            <input type="text" id="fullName" required><br>
+            <label for="city">Місто:</label>
+            <select id="city" required>
+                <option value="Київ">Київ</option>
+                <option value="Харків">Харків</option>
+                <option value="Львів">Львів</option>
+                <option value="Одеса">Одеса</option>
+                
+            </select><br>
+            <label for="postOffice">Склад Нової пошти:</label>
+            <input type="text" id="postOffice" required><br>
+            <label for="paymentMethod">Спосіб оплати:</label>
+            <select id="paymentMethod" required>
+                <option value="Післяплата">Післяплата</option>
+                <option value="Оплата банківською карткою">Оплата банківською карткою</option>
+            </select><br>
+            <label for="quantity">Кількість товару:</label>
+            <input type="number" id="quantity" min="1" value="1" required><br>
+            <label for="comment">Коментар до замовлення:</label><br>
+            <textarea id="comment"></textarea><br>
+            <button type="submit">Підтвердити замовлення</button>
+        </form>
+    </div>
+    
+    <div id="orderInfo" style="display:none;">
+        <h2>Інформація про замовлення</h2>
+        <p id="productInfoOrder"></p>
+        <p id="deliveryInfo"></p>
+    </div>
+    
     <script src="./script.js"></script>
 </body>
 </html>

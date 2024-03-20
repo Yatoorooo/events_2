@@ -54,3 +54,34 @@ function buyProduct() {
     productDescription.textContent = '';
     buyButton.style.display = 'none';
 }
+function showOrderForm() {
+    document.getElementById("orderForm").style.display = "block";
+    document.getElementById("productInfo").style.display = "none";
+}
+
+function submitOrder(event) {
+    event.preventDefault();
+
+    let fullName = document.getElementById("fullName").value;
+    let city = document.getElementById("city").value;
+    let novaPoshtaBranch = document.getElementById("novaPoshtaBranch").value;
+    let paymentType = document.querySelector('input[name="paymentType"]:checked').value;
+    let quantity = document.getElementById("quantity").value;
+    let comment = document.getElementById("comment").value;
+
+    if (fullName && city && novaPoshtaBranch && paymentType && quantity) {
+       
+        let orderInfo = "Ім'я: " + fullName + "<br>";
+        orderInfo += "Місто: " + city + "<br>";
+        orderInfo += "Склад Нової пошти: " + novaPoshtaBranch + "<br>";
+        orderInfo += "Тип оплати: " + paymentType + "<br>";
+        orderInfo += "Кількість товару: " + quantity + "<br>";
+        orderInfo += "Коментар: " + comment;
+
+        document.getElementById("orderInfo").style.display = "block";
+        document.getElementById("orderDetails").innerHTML = orderInfo;
+        document.getElementById("orderForm").style.display = "none";
+    } else {
+        alert("Будь ласка, заповніть всі обов'язкові поля");
+    }
+}
