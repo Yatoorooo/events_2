@@ -85,3 +85,48 @@ function submitOrder(event) {
         alert("Будь ласка, заповніть всі обов'язкові поля");
     }
 }
+
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
+      
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+function saveOrder(order) {
+    orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+
+function deleteOrder(index) {
+    orders.splice(index, 1);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    showMyOrders();
+}
+
+
+function showMyOrders() {
+    let myOrdersDiv = document.getElementById('myOrders');
+    myOrdersDiv.innerHTML = '';
+
+    if (orders.length === 0) {
+        myOrdersDiv.innerHTML = '<p>У вас немає замовлень</p>';
+    } else {
+        orders.forEach(function(order, index) {
+            let orderDiv = document.createElement('div');
+            orderDiv.classList.add('order');
+            let orderDetailsDiv = document.createElement('div');
+            orderDetailsDiv.classList.add('order-details');
+            orderDiv.innerHTML = '<p>Дата: ' + order.date + '</p><p>Ціна: ' + order.price + '</p>';
+            orderDiv.appendChild(orderDetailsDiv);
+            let deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Видалити';
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.onclick = function() {
+                deleteOrder(index);
+            };
+            orderDiv.appendChild(deleteBtn);
+            myOrdersDiv.appendChild(orderDiv);
+        });
+    }
+}
